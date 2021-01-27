@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zk.tools.dao.SaveInfoDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zk.tools.entity.SaveInfoEntity" id="saveInfoMap">
+        <result property="sId" column="s_id"/>
+        <result property="sName" column="s_name"/>
+        <result property="sType" column="s_type"/>
+        <result property="state" column="state"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="text" column="text"/>
+    </resultMap>
+
+    <insert id="addInfo" parameterType="map">
+        INSERT INTO `save_info` ( `s_name`, `s_type`, `state`, `create_time`,`text`)
+        VALUES ( #{sname}, #{stype}, #{state}, now(), #{text})
+    </insert>
+</mapper>
